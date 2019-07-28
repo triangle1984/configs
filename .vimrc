@@ -1,3 +1,6 @@
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 set nobackup       ""#no backup files
 set nowritebackup  ""#xonly in case you don't want a backup file while editing
 set noswapfile
@@ -14,41 +17,38 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 set noerrorbells
 set visualbell
 set t_vb=
-Plugin 'gmarik/Vundle.vim'              " let Vundle manage Vundle, required
-""Plugin "vim-scripts/bash-support.vim"
+Plug 'gmarik/Vundle.vim'              " let Vundle manage Vundle, required
 "---------=== Code/project navigation ===-------------
-Plugin 'scrooloose/nerdtree'            " A tree explorer plugin for vim
-Plugin 'Shougo/unite.vim'               " Navigation between buffers and files
-Plugin 'majutsushi/tagbar'              " Class/module browser
+Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
+Plug 'Shougo/unite.vim'               " Navigation between buffers and files
+Plug 'majutsushi/tagbar'              " Class/module browser
 
 "------------------=== Other ===----------------------
-Plugin 'zxqfl/tabnine-vim'
-Plugin 'vim-airline/vim-airline'        " Lean & mean status/tabline for vim that's light as air
-Plugin 'rosenfeld/conque-term'          " Consoles as buffers
-Plugin 'tpope/vim-surround' 
+Plug 'zxqfl/tabnine-vim'
+Plug 'vim-airline/vim-airline'        " Lean & mean status/tabline for vim that's light as air
+Plug 'rosenfeld/conque-term'          " Consoles as buffers
+Plug 'tpope/vim-surround' 
 " Parentheses, brackets, quotes, XML tags, and more
 
 "---------------=== Languages support ===-------------
-Plugin 'scrooloose/syntastic'           " Syntax checking plugin for Vim
-Plugin 'tpope/vim-commentary'           " Comment stuff out
-Plugin 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) support
+Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
+Plug 'tpope/vim-commentary'           " Comment stuff out
+Plug 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) support
 set noerrorbells
 set visualbell
 set t_vb=
 " --- Python ---
-Plugin 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
-Plugin 'mitsuhiko/vim-jinja'            " Jinja support for vim
-Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
-Plugin 'hynek/vim-python-pep8-indent'   " PEP8 indent
-Plugin 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
+Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
+Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
+Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
+Plug 'hynek/vim-python-pep8-indent'   " PEP8 indent
+Plug 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
+call plug#end()
 
-
-call vundle#end() " required
 filetype on
 filetype plugin on
 filetype plugin indent on
