@@ -45,7 +45,7 @@ set t_vb=
 Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
 Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
-Plug 'hynek/vim-python-pep8-indent'   " PEP8 indent
+"Plug 'hynek/vim-python-pep8-indent'   " PEP8 indent
 Plug 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 call plug#end()
 
@@ -191,7 +191,7 @@ let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
-let g:pymode_lint_checkers = ['pylint', 'pep8']
+"let g:pymode_lint_checkers = ['pylint', 'pep8']
 let g:pymode_lint_cwindow = 1
 let g:pymode_lint_ignore="E501,W601,C0110,C0111"
 let g:pymode_lint_write = 0

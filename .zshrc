@@ -1,10 +1,10 @@
-#Хде находится oh my zsh. Для рута нужно указать вручную
+#Хде находится oh my zsh. Для рута нужно указать вручную ff
 export ZSH="/home/$(whoami)/.oh-my-zsh"
 
 # тема к zsh
 ZSH_THEME="agnoster"
 # плагины
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo)
 
 source $ZSH/oh-my-zsh.sh
 #<---- флаги компиляции ---->
