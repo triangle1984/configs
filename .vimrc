@@ -1,5 +1,6 @@
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    PlugInstall
 endif
 set nobackup       ""#no backup files
 set nowritebackup  ""#xonly in case you don't want a backup file while editing
@@ -8,8 +9,6 @@ nnoremap ^ :
 autocmd FileType python nnoremap <buffer> <F5>  :exec '!clear;proxychains4 python %' shellescape(@%, 1)<cr>
 autocmd FileType python nnoremap <buffer> <F6> :exec '!clear;python %' shellescape(@%, 1)<cr>
 nnoremap <buffer> <F7> :exec "!./ %" shellescape(@%, 1)<cr>
-set nobackup
-set noswapfile
 set foldcolumn=1
 set novisualbell
 set t_vb=
@@ -20,16 +19,13 @@ set expandtab
 call plug#begin('~/.vim/plugged')
 set noerrorbells
 set visualbell
-set t_vb=
-Plug 'gmarik/Vundle.vim'              " let Vundle manage Vundle, required
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
-Plug 'Shougo/unite.vim'               " Navigation between buffers and files
 Plug 'majutsushi/tagbar'              " Class/module browser
-
 "------------------=== Other ===----------------------
 Plug 'zxqfl/tabnine-vim'
 Plug 'vim-airline/vim-airline'        " Lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline-themes'
 Plug 'rosenfeld/conque-term'          " Consoles as buffers
 Plug 'tpope/vim-surround' 
 " Parentheses, brackets, quotes, XML tags, and more
@@ -38,9 +34,6 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
 Plug 'tpope/vim-commentary'           " Comment stuff out
 Plug 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) support
-set noerrorbells
-set visualbell
-set t_vb=
 " --- Python ---
 Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
 Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
@@ -103,7 +96,6 @@ set wildignore+=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,
 set wildmode=list:full
 " Don't bell and blink
 set visualbell t_vb=    " turn off error beep/flash
-set novisualbell        " turn off visual bell
 set enc=utf-8           " utf-8 default encoding
 set ls=2                " always show status bar
 set incsearch           " incremental search
@@ -143,13 +135,13 @@ let g:snippets_dir = "~/.vim/vim-snippets/snippets"
 "NERDTree
 map <F1> :NERDTreeToggle<CR>    " browse the list of files in the current directory
 
+nmap <F8> :TagbarToggle<CR>
 
 
 " ConqueTerm
 nnoremap <F6> :exe "ConqueTermSplit ipython " . expand("%")<CR> " and debug-mode for <F6>
 let g:ConqueTerm_StartMessages = 0
 let g:ConqueTerm_CloseOnEnd = 0
-
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -167,6 +159,7 @@ let g:syntastic_style_warning_symbol = 'x'
 
 " Vim-Airline
 "let g:airline_theme='powerlineish'
+let g:airline_theme="deus"
 
 "=====================================================
 " Python-mode settings
@@ -328,4 +321,3 @@ endfunction
 set noerrorbells
 set vb t_vb=
 set t_Co=256
-
