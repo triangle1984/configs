@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 "---------=== Удобства  ===-------------
 Plug 'tpope/vim-commentary'           " Comment stuff out
 Plug 'Raimondi/delimitMate'
+Plug 'godlygeek/tabular'
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
 Plug 'majutsushi/tagbar'              " Class/module browser
