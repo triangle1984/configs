@@ -1,29 +1,16 @@
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-    :PlugInstall
 endif
-set nobackup       ""#no backup files
-set nowritebackup  ""#xonly in case you don't want a backup file while editing
-set noswapfile
-nnoremap ^ :
-autocmd FileType python nnoremap <buffer> <F5>  :exec '!clear;proxychains4 python %' shellescape(@%, 1)<cr>
-autocmd FileType python nnoremap <buffer> <F6> :exec '!clear;python %' shellescape(@%, 1)<cr>
-nnoremap <buffer> <F7> :exec "!./ %" shellescape(@%, 1)<cr>
-set foldcolumn=1
-set novisualbell
-set t_vb=
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
+
 call plug#begin('~/.vim/plugged')
-set noerrorbells
-set visualbell
+
+"---------=== Удобства  ===-------------
+Plug 'tpope/vim-commentary'           " Comment stuff out
+Plug 'Raimondi/delimitMate'
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
 Plug 'majutsushi/tagbar'              " Class/module browser
 "------------------=== Other ===----------------------
-Plug 'zxqfl/tabnine-vim'
 Plug 'vim-airline/vim-airline'        " Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rosenfeld/conque-term'          " Consoles as buffers
@@ -31,7 +18,7 @@ Plug 'tpope/vim-surround'
 
 "---------------=== Languages support ===-------------
 Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
-Plug 'tpope/vim-commentary'           " Comment stuff out
+Plug 'zxqfl/tabnine-vim'
 Plug 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) support
 " --- Python ---
 Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
@@ -47,11 +34,17 @@ filetype plugin indent on
 "=====================================================
 " General settings
 "=====================================================
-
+" Тема
+"let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
+" Swap
+set nobackup       ""#no backup files
+set nowritebackup  ""#xonly in case you don't want a backup file while editing
+set noswapfile
 set backspace=indent,eol,start
 " This must happen before the syntax system is enabled
 aunmenu Help.
-aunmenu Window.
 let no_buffers_menu=1
 set mousemodel=popup
 
@@ -137,10 +130,6 @@ map <F1> :NERDTreeToggle<CR>    " browse the list of files in the current direct
 nmap <F8> :TagbarToggle<CR>
 
 
-" ConqueTerm
-nnoremap <F6> :exe "ConqueTermSplit ipython " . expand("%")<CR> " and debug-mode for <F6>
-let g:ConqueTerm_StartMessages = 0
-let g:ConqueTerm_CloseOnEnd = 0
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -177,7 +166,10 @@ let g:airline_theme="deus"
 " [M Jump on previous class or method (normal, visual, operator modes)
 " ]M Jump on next class or method (normal, visual, operator modes)
 let g:pymode_rope = 0
-
+"Удобство 
+nnoremap ^ :
+" запуск питон скриптов на F5
+autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
 " Documentation
 let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
@@ -265,15 +257,11 @@ nnoremap <M-]> :vertical resize -5<cr>
 inoremap <C-space> <C-x><C-o>
 
 " Generate and insert UUID4 into code by <F12> key
-nnoremap <F12> :call InsertUUID4()<CR>
+nnoremap <F6> :call InsertUUID4()<CR>
 
 " Python code check on PEP8
 autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>
 
-"=====================================================
-" Languages support
-"=====================================================
-" --- C/C++/C# ---
 
 
 
@@ -288,9 +276,6 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent 
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,E126,E721\ --max-line-length=80'
-"let g:solarized_termcolors=256
-colorscheme solarized
-set background=dark
 " --- Vim ---
 autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 " --- template language support (SGML / XML too) ---
