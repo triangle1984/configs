@@ -1,6 +1,6 @@
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-    PlugInstall
+    :PlugInstall
 endif
 set nobackup       ""#no backup files
 set nowritebackup  ""#xonly in case you don't want a backup file while editing
@@ -28,7 +28,6 @@ Plug 'vim-airline/vim-airline'        " Lean & mean status/tabline for vim that'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rosenfeld/conque-term'          " Consoles as buffers
 Plug 'tpope/vim-surround' 
-" Parentheses, brackets, quotes, XML tags, and more
 
 "---------------=== Languages support ===-------------
 Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
@@ -38,7 +37,6 @@ Plug 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) sup
 Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
 Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
-"Plug 'hynek/vim-python-pep8-indent'   " PEP8 indent
 Plug 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 call plug#end()
 
@@ -69,7 +67,8 @@ endif
 set ttyfast
 
 " set guifont=Consolas:h13
-set guifont=DejaVu\Sans\Mono\for\Powerline:h12
+"#set guifont=DejaVu\Sans\Mono\for\Powerline:h12
+set guifont=ubuntu
 
 " Enable Syntax Colors
 " in GUI mode we go with fruity and Monaco 13
