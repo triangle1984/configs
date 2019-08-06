@@ -1,5 +1,4 @@
 # Конфиги)0
-*Необязательно на 100% мои, но явно переделанные 
 ## polybar
 Шрифты \ font: fixed, unifont, siji, Weather Icons, FontAwesome5Free
 ### пикча
@@ -8,3 +7,9 @@
 ## Vim
 плагин менеджер - Plug
 установка всех плагинов - :PlugInstall
+### пикча
+![Image alt](https://i.ibb.co/8PLXH93/vsh-D-m-DR5-Og.jpg)
+
+## zsh
+### Пикча
+![Image alt](https://pp.userapi.com/c855424/v855424007/b2d5b/lBpLOMtzMIQ.jpg)
