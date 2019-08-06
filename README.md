@@ -9,6 +9,9 @@
 установка всех плагинов - :PlugInstall
 ### пикча
 ![Image alt](https://i.ibb.co/8PLXH93/vsh-D-m-DR5-Og.jpg)
+### Бинды
+Теги - F7
+Файловый менеджер - ctrl n
 
 ## zsh
 ### Пикча
