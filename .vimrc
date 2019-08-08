@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'           " Comment stuff out
 Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
-Plug 'ekalinin/dockerfile.vim'
+Plug 'chrisbra/Colorizer'
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
 Plug 'majutsushi/tagbar'              " Class/module browser
@@ -22,6 +22,9 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
 Plug 'zxqfl/tabnine-vim'
 Plug 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) support
+Plug 'ekalinin/dockerfile.vim'
+Plug 'Firef0x/PKGBUILD'
+Plug 'jiangmiao/auto-pairs'
 " --- Python ---
 Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
 Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
