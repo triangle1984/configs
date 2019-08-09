@@ -259,6 +259,7 @@ ramp-2 = 
 [module/popup-calendar]
 type = custom/script
 exec = ~/polybar-scripts/popup-calendar.sh
+format-prefix = " "
 interval = 5
 click-left = ~/polybar-scripts/popup-calendar.sh --popup
 
