@@ -12,8 +12,8 @@ source $ZSH/oh-my-zsh.sh
 #<--- алисы ---->
 clear
 alias termbin="nc termbin.com 9999"
-alias neofetch="neofetch | lolcat"
 alias pacman="sudo pacman"
+alias docker="sudo docker"
 alias update="sudo pacman -Syy"
 alias upgrade="sudo pacman -Syyu"
 alias aur="pacaur"
@@ -37,6 +37,7 @@ alias temp="watch sensors"
 alias rim="sudo rim"
 alias f="fuck"
 alias powerpill="sudo powerpill"
+alias pacman="yay"
 #colour
 if [ -f /usr/bin/grc ]; then
  alias gcc="grc --colour=auto gcc"
@@ -103,6 +104,6 @@ function chpwd() {
 # <--- переменные, иницилизации некоторых утилит ---->
 export PATH
 unsetopt beep
-python ~/cowsay/cowsay.py samara | lolcat
+#python ~/cowsay/cowsay.py samara | lolcat
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
