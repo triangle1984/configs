@@ -59,7 +59,7 @@ font-5 = FontAwesome5Free:style=Regular:size=10;1
 font-6 = FontAwesome5Brands:style=Regular:size=10;1
 
 modules-left = i3
-modules-right = filesystem pulseaudio xkeyboard memory cpu openweathermap-detailed updates-arch-combined temperature test date powermenu
+modules-right = filesystem pulseaudio xkeyboard memory cpu openweathermap-detailed updates-arch-combined temperature popup-calendar powermenu
 
 tray-position = right
 tray-padding = 2
@@ -243,7 +243,6 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -257,6 +256,11 @@ label-warn = %temperature-c%
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
+[module/popup-calendar]
+type = custom/script
+exec = ~/polybar-scripts/popup-calendar.sh
+interval = 5
+click-left = ~/polybar-scripts/popup-calendar.sh --popup
 
 [module/powermenu]
 type = custom/menu
