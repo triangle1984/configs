@@ -4,7 +4,7 @@ font: fixed, unifont, siji, Weather Icons, FontAwesome5Free
 ### пикча
 ![Image alt](https://i.ibb.co/mc0Sv88/2019-08-07.png)
 ### Предупреждение
-для календаря читаните вот [это](https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/popup-calendar)
+для календаря,  читаните вот [это](https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/popup-calendar)
 ## Vim
 PluginManager, менеджер плагинов - Plug
 install, установка плагинов - :PlugInstall
