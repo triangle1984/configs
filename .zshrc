@@ -103,6 +103,5 @@ function chpwd() {
 # <--- переменные, иницилизации некоторых утилит ---->
 export PATH
 unsetopt beep
-#python ~/cowsay/cowsay.py samara | lolcat
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
