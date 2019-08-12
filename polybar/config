@@ -59,7 +59,7 @@ font-5 = FontAwesome5Free:style=Regular:size=10;1
 font-6 = FontAwesome5Brands:style=Regular:size=10;1
 
 modules-left = i3
-modules-right = filesystem pulseaudio xkeyboard memory cpu openweathermap-detailed updates-arch-combined temperature popup-calendar powermenu
+modules-right = pulseaudio xkeyboard memory cpu openweathermap-detailed updates-arch-combined temperature popup-calendar powermenu
 
 tray-position = right
 tray-padding = 2
@@ -93,16 +93,6 @@ label-layout = %layout%
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-
-[module/filesystem]
-type = internal/fs
-format-prefix = " " 
-interval = 25
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
