@@ -25,6 +25,7 @@ Plug 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) sup
 Plug 'ekalinin/dockerfile.vim'
 Plug 'Firef0x/PKGBUILD'
 Plug 'jiangmiao/auto-pairs'
+Plug 'fatih/vim-go'
 " --- Python ---
 Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
 Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
@@ -149,7 +150,7 @@ let g:syntastic_error_symbol = 'X'
 let g:syntastic_style_error_symbol = 'X'
 let g:syntastic_warning_symbol = 'x'
 let g:syntastic_style_warning_symbol = 'x'
-
+let g:AutoPairsFlyMode = 1
 " Vim-Airline
 "let g:airline_theme='powerlineish'
 let g:airline_theme="deus"
@@ -173,10 +174,10 @@ let g:airline_theme="deus"
 let g:pymode_rope = 0
 "Удобство 
 nnoremap ^ :
-" запуск питон скриптов на F5
-autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
+" запуск на F5
 " Documentation
 let g:pymode_doc = 0
+autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
 let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1

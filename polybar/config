@@ -96,6 +96,7 @@ label-indicator-margin = 1
 
 [module/filesystem]
 type = internal/fs
+format-prefix = " " 
 interval = 25
 mount-0 = /
 
