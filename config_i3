@@ -157,4 +157,3 @@ bindsym $mod+r mode "resize"
 # }
 exec_always --no-startup-id "killall polybar; polybar example"
 exec --no-startup-id "nitrogen --restore"
-exec "chromium"
