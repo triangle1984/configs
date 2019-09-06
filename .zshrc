@@ -11,7 +11,7 @@ source $ZSH/oh-my-zsh.sh
 # у меня их нет)0
 #<--- алисы ---->
 clear
-alias termbin="nc termbin.com 9999"
+alias termbin="nc termbin.com 9999 | xclip -selection clipboard"
 alias pacman="sudo pacman"
 alias docker="sudo docker"
 alias update="sudo pacman -Syy"
@@ -37,21 +37,17 @@ alias temp="watch sensors"
 alias rim="sudo rim"
 alias f="fuck"
 alias powerpill="sudo powerpill"
-#colour
-if [ -f /usr/bin/grc ]; then
- alias gcc="grc --colour=auto gcc"
- alias irclog="grc --colour=auto irclog"
- alias log="grc --colour=auto log"
- alias netstat="grc --colour=auto netstat"
- alias ping="grc --colour=auto ping"
- alias proftpd="grc --colour=auto proftpd"
- alias traceroute="grc --colour=auto traceroute"
- alias lias grep="grep --color=auto"
- alias ls='ls --color=auto'
-fi
+alias gcc="grc --colour=auto gcc"
+alias irclog="grc --colour=auto irclog"
+alias log="grc --colour=auto log"
+alias netstat="grc --colour=auto netstat"
+alias egrep="egrep --color=always"
+alias proftpd="grc --colour=auto proftpd"
+alias traceroute="grc --colour=auto traceroute"
+alias lias grep="grep --color=auto"
+alias ls='ls --color=auto'
 # <---- функции---->A
 autoload -Uz compinit 
-eval $(thefuck --alias)
 zstyle ':completion::complete:*' gain-privileges 1
 # убийца мать его архивов
 ex () {
