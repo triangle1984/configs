@@ -1,0 +1,7 @@
+rofi.combi-modi:    drun,run,ssh
+rofi.theme:         solarized
+rofi.font:          ubuntu 12
+rofi.modi:          drun
+rofi.show_icons:    true
+rofi.sidebar-mode:  true
+rofi.hide-scrollbar: true
