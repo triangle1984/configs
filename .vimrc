@@ -6,8 +6,8 @@ call plug#begin('~/.vim/plugged')
 
 "---------=== Удобства  ===-------------
 Plug 'tpope/vim-commentary'           " Comment stuff out
-Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
+Plug 'Townk/vim-autoclose'
 Plug 'chrisbra/Colorizer'
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
@@ -17,7 +17,6 @@ Plug 'vim-airline/vim-airline'        " Lean & mean status/tabline for vim that'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rosenfeld/conque-term'          " Consoles as buffers
 Plug 'tpope/vim-surround' 
-
 "---------------=== Languages support ===-------------
 Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
 Plug 'zxqfl/tabnine-vim'
@@ -34,9 +33,10 @@ Plug 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 call plug#end()
 
 filetype on
+set clipboard=unnamedplus
 filetype plugin on
 filetype plugin indent on
-
+nnoremap ^ :
 "=====================================================
 " General settings
 "=====================================================
@@ -144,7 +144,10 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 noremap <f7> :w<CR>:SyntasticCheck<CR>
-
+let g:python_highlight_all = 1
+" let g:indentLine_color_term = 0
+" let g:indentLine_bgcolor_term = 202
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " Better :sign interface symbols
 let g:syntastic_error_symbol = 'X'
 let g:syntastic_style_error_symbol = 'X'
@@ -178,6 +181,7 @@ nnoremap ^ :
 " Documentation
 let g:pymode_doc = 0
 autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
+noremap <buffer> <F6> :exec 'set nu!'<cr>
 let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
@@ -263,7 +267,6 @@ nnoremap <M-]> :vertical resize -5<cr>
 inoremap <C-space> <C-x><C-o>
 
 " Generate and insert UUID4 into code by <F12> key
-nnoremap <F6> :call InsertUUID4()<CR>
 
 " Python code check on PEP8
 autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>

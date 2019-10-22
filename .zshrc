@@ -40,7 +40,6 @@ alias powerpill="sudo powerpill"
 alias gcc="grc --colour=auto gcc"
 alias irclog="grc --colour=auto irclog"
 alias log="grc --colour=auto log"
-alias netstat="grc --colour=auto netstat"
 alias egrep="egrep --color=always"
 alias proftpd="grc --colour=auto proftpd"
 alias traceroute="grc --colour=auto traceroute"
@@ -96,8 +95,15 @@ zsh_command_time() {
 function chpwd() {
            ls 
         }
+gall() {
+	git add .
+	git commit -m "$@"
+	git push
+}
 # <--- переменные, иницилизации некоторых утилит ---->
 export PATH
 unsetopt beep
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+export EDITOR="vim"
+export PYTHONPATH=/home/archie/vk-bot
