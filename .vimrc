@@ -25,11 +25,15 @@ Plug 'ekalinin/dockerfile.vim'
 Plug 'Firef0x/PKGBUILD'
 Plug 'jiangmiao/auto-pairs'
 Plug 'fatih/vim-go'
+Plug 'Glench/Vim-Jinja2-Syntax'
 " --- Python ---
 Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
-Plug 'mitsuhiko/vim-jinja'            " Jinja support for vim
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plug 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
+Plug 'tell-k/vim-autopep8'
+" --- HTML or just web ---
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
 call plug#end()
 
 filetype on
@@ -81,8 +85,12 @@ endif
 if has("mac")
     let macvim_hig_shift_movement = 1
 endif
-
+let g:autopep8_disable_show_diff=1
 tab sball
+" захотелось тут разместить настройку авто pep8
+autocmd FileType python autocmd BufWritePost * :call Autopep8() | :w
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+" autocmd FileType python :call Autopep8()
 set switchbuf=useopen
 
 " Use system clipboard
@@ -178,14 +186,15 @@ let g:pymode_rope = 0
 "Удобство 
 nnoremap ^ :
 " запуск на F5
-" Documentation
 let g:pymode_doc = 0
 autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
+autocmd FileType html nnoremap <buffer> <F5> :exec '!chromium %'<cr>
 noremap <buffer> <F6> :exec 'set nu!'<cr>
 let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
 "let g:pymode_lint_checkers = ['pylint', 'pep8']
+let g:pymode_lint_config = '$HOME/pylint.rc'
 let g:pymode_lint_cwindow = 1
 let g:pymode_lint_ignore="E501,W601,C0110,C0111"
 let g:pymode_lint_write = 0
@@ -211,11 +220,11 @@ let g:pymode_run = 0
 
 " Other options
 let g:pymode_options_colorcolumn = 0
-if has("gui_running")
-    let g:airline_powerline_fonts = 1
-else
-    let g:airline_powerline_fonts = 0
-endif
+" if has("gui_running")
+"     let g:airline_powerline_fonts = 1
+" else
+"     let g:airline_powerline_fonts = 0
+" endif
 
 "=====================================================
 " User hotkeys
@@ -294,7 +303,6 @@ autocmd FileType html,htmljinja,htmldjango imap <buffer> <c-l> <Plug>SparkupNext
 autocmd FileType htmljinja setlocal commentstring={#\ %s\ #}
 let html_no_rendering=1
 let g:syntastic_html_checkers = []
-
 "=====================================================
 " User functions
 "=====================================================
