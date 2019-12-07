@@ -188,7 +188,7 @@ nnoremap ^ :
 " запуск на F5
 let g:pymode_doc = 0
 autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
-autocmd FileType html nnoremap <buffer> <F5> :exec '!chromium %'<cr>
+autocmd FileType html nnoremap <buffer> <F5> :exec '!clear; chromium %'<cr>
 noremap <buffer> <F6> :exec 'set nu!'<cr>
 let g:pymode_doc_key = 'K'
 "Linting
@@ -322,3 +322,7 @@ endfunction
 set noerrorbells
 set vb t_vb=
 set t_Co=256
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
