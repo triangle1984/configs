@@ -9,6 +9,7 @@ Plug 'tpope/vim-commentary'           " Comment stuff out
 Plug 'godlygeek/tabular'
 Plug 'Townk/vim-autoclose'
 Plug 'chrisbra/Colorizer'
+Plug 'tpope/vim-sleuth'
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
 Plug 'majutsushi/tagbar'              " Class/module browser
@@ -18,12 +19,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rosenfeld/conque-term'          " Consoles as buffers
 Plug 'tpope/vim-surround' 
 "---------------=== Languages support ===-------------
-Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
+" Plug 'scrooloose/syntastic'           " Syntax checking plugin for Vim
 Plug 'zxqfl/tabnine-vim'
 Plug 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) support
 Plug 'ekalinin/dockerfile.vim'
 Plug 'Firef0x/PKGBUILD'
 Plug 'jiangmiao/auto-pairs'
+Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go'
 Plug 'Glench/Vim-Jinja2-Syntax'
 " --- Python ---
@@ -31,11 +33,11 @@ Plug 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, br
 Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plug 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 Plug 'tell-k/vim-autopep8'
+Plug 'lfilho/cosco.vim'
 " --- HTML or just web ---
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 call plug#end()
-
 filetype on
 set clipboard=unnamedplus
 filetype plugin on
@@ -90,6 +92,8 @@ tab sball
 " захотелось тут разместить настройку авто pep8
 autocmd FileType python autocmd BufWritePost * :call Autopep8() | :w
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+autocmd FileType cpp setlocal commentstring=//\ %s
+autocmd FileType asm setlocal commentstring=#\ %s
 " autocmd FileType python :call Autopep8()
 set switchbuf=useopen
 
@@ -151,7 +155,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
-noremap <f7> :w<CR>:SyntasticCheck<CR>
+" noremap <f7> :w<CR>:SyntasticCheck<CR>
 let g:python_highlight_all = 1
 " let g:indentLine_color_term = 0
 " let g:indentLine_bgcolor_term = 202
@@ -189,6 +193,8 @@ nnoremap ^ :
 let g:pymode_doc = 0
 autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
 autocmd FileType html nnoremap <buffer> <F5> :exec '!clear; chromium %'<cr>
+autocmd FileType go nnoremap <buffer> <F5> :exec '!clear; go run %'<cr>
+autocmd FileType cpp nnoremap <buffer> <F5> :exec '!clear; g++ %; ./a.out'<cr>
 noremap <buffer> <F6> :exec 'set nu!'<cr>
 let g:pymode_doc_key = 'K'
 "Linting
@@ -281,7 +287,10 @@ inoremap <C-space> <C-x><C-o>
 autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>
 
 
-
+" -- Asm --- "
+autocmd FileType asm setlocal completeopt-=preview
+autocmd FileType asm setlocal expandtab shiftwidth=4 tabstop=8
+"
 
 " --- Python ---
 let python_highlight_all=1
