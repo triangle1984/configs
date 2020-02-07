@@ -29,6 +29,7 @@ alert = #bd2c40
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
+tray-maxsize = 56
 ; offset-x = 1%
 ; offset-y = 1%
 bottom = true
