@@ -9,7 +9,12 @@ Plug 'tpope/vim-commentary'           " Comment stuff out
 Plug 'godlygeek/tabular'
 Plug 'Townk/vim-autoclose'
 Plug 'chrisbra/Colorizer'
+Plug 'bfrg/vim-cpp-modern'
 Plug 'tpope/vim-sleuth'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'bfrg/vim-cpp-modern'
 "---------=== Code/project navigation ===-------------
 Plug 'scrooloose/nerdtree'            " A tree explorer plugin for vim
 Plug 'majutsushi/tagbar'              " Class/module browser
@@ -37,7 +42,10 @@ Plug 'lfilho/cosco.vim'
 " --- HTML or just web ---
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
+
 call plug#end()
+call glaive#Install()
+autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
 filetype on
 set clipboard=unnamedplus
 filetype plugin on
@@ -150,6 +158,8 @@ nmap <F8> :TagbarToggle<CR>
 
 
 " Syntastic
+" let g:cpp_no_function_highlight = 1
+let g:cpp_simple_highlight = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_signs = 1
@@ -194,7 +204,7 @@ let g:pymode_doc = 0
 autocmd FileType python nnoremap <buffer> <F5> :exec '!clear;python %' shellescape(@%, 1)<cr>
 autocmd FileType html nnoremap <buffer> <F5> :exec '!clear; chromium %'<cr>
 autocmd FileType go nnoremap <buffer> <F5> :exec '!clear; go run %'<cr>
-autocmd FileType cpp nnoremap <buffer> <F5> :exec '!clear; g++ %; ./a.out'<cr>
+autocmd FileType cpp nnoremap <buffer> <F5> :exec '!clear; g++ % && ./a.out'<cr>
 noremap <buffer> <F6> :exec 'set nu!'<cr>
 let g:pymode_doc_key = 'K'
 "Linting
@@ -312,11 +322,6 @@ autocmd FileType html,htmljinja,htmldjango imap <buffer> <c-l> <Plug>SparkupNext
 autocmd FileType htmljinja setlocal commentstring={#\ %s\ #}
 let html_no_rendering=1
 let g:syntastic_html_checkers = []
-"=====================================================
-" User functions
-"=====================================================
-" Small helper that inserts a random uuid4
-" ----------------------------------------
 function! InsertUUID4()
 python << endpython
 if 1:
