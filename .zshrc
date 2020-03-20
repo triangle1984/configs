@@ -1,28 +1,36 @@
-#Хде находится oh my zsh. Для рута нужно указать вручную ff
+#Хде находится oh my zsh. Для рута нужно указать вручную
 export ZSH="/home/$(whoami)/.oh-my-zsh"
 
 # тема к zsh
 ZSH_THEME="agnoster"
 # плагины
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo lxd-completion-zsh docker)
 
 source $ZSH/oh-my-zsh.sh
+clear
+# Load the oh-my-zsh's library.
 #<---- флаги компиляции ---->
 # у меня их нет)0
 #<--- алисы ---->
-clear
-alias termbin="nc termbin.com 9999 | xclip -selection clipboard"
 alias pacman="sudo pacman"
+alias cp="cp -r"
+alias ls="sudo ls --color=auto"
+# alias dockers="docker -H ssh://root@193.38.51.77"
+# alias dockers-compose="sudo docker-compose -H ssh://root@flafe.org"
 alias docker="sudo docker"
+alias docker-compose="sudo docker-compose"
 alias update="sudo pacman -Syy"
 alias upgrade="sudo pacman -Syyu"
 alias aur="pacaur"
+alias gg="git pull"
 alias start="sudo systemctl start"
+alias gitclone="git clone --depth 1 -b master"
 alias stop="sudo systemctl stop"
 alias restart="sudo systemctl restart"
 alias status="sudo systemctl status"
 alias enable="sudo systemctl enable"
 alias disable="sudo systemctl disable"
+alias lxc="sudo lxc"
 alias status="systemctl status"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias e="exit"
@@ -41,10 +49,11 @@ alias gcc="grc --colour=auto gcc"
 alias irclog="grc --colour=auto irclog"
 alias log="grc --colour=auto log"
 alias egrep="egrep --color=always"
+alias gc="gc -a"
 alias proftpd="grc --colour=auto proftpd"
 alias traceroute="grc --colour=auto traceroute"
 alias lias grep="grep --color=auto"
-alias ls='ls --color=auto'
+alias pip='sudo pip'
 # <---- функции---->A
 autoload -Uz compinit 
 zstyle ':completion::complete:*' gain-privileges 1
@@ -70,27 +79,6 @@ ex () {
    echo "'$1' не буду распаковывать этот хуевый архив"
  fi
 }
-# неебись шо
-zsh_command_time() {
-    if [ -n "$ZSH_COMMAND_TIME" ]; then
-        hours=$(($ZSH_COMMAND_TIME/3600))
-        min=$(($ZSH_COMMAND_TIME/60))
-        sec=$(($ZSH_COMMAND_TIME%60))
-        if [ "$ZSH_COMMAND_TIME" -le 60 ]; then
-            timer_show="$fg[green]$ZSH_COMMAND_TIME s."
-        elif [ "$ZSH_COMMAND_TIME" -gt 60 ] && [ "$ZSH_COMMAND_TIME" -le 180 ]; then
-            timer_show="$fg[yellow]$min min. $sec s."
-        else
-            if [ "$hours" -gt 0 ]; then
-                min=$(($min%60))
-                timer_show="$fg[red]$hours h. $min min. $sec s."
-            else
-                timer_show="$fg[red]$min min. $sec s."
-            fi
-        fi
-        printf "${ZSH_COMMAND_TIME_MSG}\n" "$timer_show"
-    fi
-}
 # ls при переходе в каталог
 function chpwd() {
            ls 
@@ -100,10 +88,25 @@ gall() {
 	git commit -m "$@"
 	git push
 }
+cstring() {
+	wc -l **/*.py
+}
+termbin() {
+	cat $1 | nc termbin.com 9999 | xclip -selection clipboard && echo "се"
+}
+s(){
+   ssh -l root $1 ${@:2}
+}
+dockers(){
+   ssh -l root 193.38.51.77 docker $@
+}
 # <--- переменные, иницилизации некоторых утилит ---->
 export PATH
 unsetopt beep
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=256"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 export EDITOR="vim"
-export PYTHONPATH=/home/archie/vk-bot
+export PYTHONPATH=/home/archie/GLaDOS
+export PATH=$PATH:/var/lib/snapd/snap/bin
+export GOPATH=~/go
+# export TERM=xterm
