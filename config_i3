@@ -29,6 +29,7 @@ bindsym F12 exec "flameshot gui"
 bindsym $mod+Shift+v exec --no-startup-id"killall vk; vk-messenger"
 bindsym $mod+Shift+t exec --no-startup-id"killall telegram-desktop; telegram-desktop"
 bindsym $mod+Shift+h exec --no-startup-id"chromium"
+bindsym $mod+Shift+m exec --no-startup-id"java -jar /home/archie/test2/TLauncher-2.68.jar"
 bindsym $mod+Shift+p exec --no-startup-id"enpass"
 
 bindsym $mod+t border toggle
@@ -47,7 +48,7 @@ bindsym $mod+g exec "/usr/local/bin/english"
 # kill focused window
 bindsym $mod+q kill
 # start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -show drun -show-icons"
+# bindsym $mod+d exec "rofi -show drun -show-icons"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -162,5 +163,4 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id "killall polybar; polybar example"
 exec --no-startup-id "nitrogen --restore"
 exec "flameshot"
-exec --no-startup-id "/usr/bin/chromium"
-exec --no-startup-id "/usr/bin/telegram-desktop"
+exec_always --no-startup-id "ulauncher --no-window-shadow"

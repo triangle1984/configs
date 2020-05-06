@@ -54,7 +54,12 @@ nnoremap ^ :
 "=====================================================
 " General settings
 "=====================================================
-" Тема
+" indent
+autocmd FileType go set tabstop=4
+autocmd FileType go set shiftwidth=4
+autocmd FileType go set smarttab
+"
+"" Тема
 "let g:solarized_termcolors=256
 colorscheme solarized
 set background=dark

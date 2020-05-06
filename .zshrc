@@ -14,6 +14,7 @@ clear
 #<--- алисы ---->
 alias pacman="sudo pacman"
 alias cp="cp -r"
+alias sudoedit="sudo vim"
 alias ls="sudo ls --color=auto"
 # alias dockers="docker -H ssh://root@193.38.51.77"
 # alias dockers-compose="sudo docker-compose -H ssh://root@flafe.org"
@@ -23,6 +24,8 @@ alias update="sudo pacman -Syy"
 alias upgrade="sudo pacman -Syyu"
 alias aur="pacaur"
 alias gg="git pull"
+alias ansible="sudo ansible"
+alias ansible-playbook="sudo ansible-playbook"
 alias start="sudo systemctl start"
 alias gitclone="git clone --depth 1 -b master"
 alias stop="sudo systemctl stop"
@@ -98,7 +101,7 @@ s(){
    ssh -l root $1 ${@:2}
 }
 dockers(){
-   ssh -l root 193.38.51.77 docker $@
+   ssh -l root flafe.org docker $@
 }
 # <--- переменные, иницилизации некоторых утилит ---->
 export PATH
@@ -109,4 +112,5 @@ export EDITOR="vim"
 export PYTHONPATH=/home/archie/GLaDOS
 export PATH=$PATH:/var/lib/snapd/snap/bin
 export GOPATH=~/go
-# export TERM=xterm
+export OVPN_DATA="ovpn-data-example"
+ # export TERM=xterm
